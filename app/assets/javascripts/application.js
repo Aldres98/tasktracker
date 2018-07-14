@@ -11,4 +11,23 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+  $("#new_todo").hide();
+  
+  $("#show_form_button").click(function(){
+    $("#new_todo").show();
+  });
+
+  $("#hide_form_button").click(function(){
+    $("#new_todo").hide();
+  });
+
+  $("#ok_submit_link").click(function(event) {
+    event.preventDefault();
+    $("#new_todo").submit();
+  });
+});

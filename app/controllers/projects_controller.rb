@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   def index
+    @todo = Todo.new
     @projects = Project.all
   end
 
@@ -7,16 +8,9 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @todo = Todo.create(todo_params)
   end
 
   def delete
   end
-
-  private
-
-def todo_params
-  params.require(:todo).permit(:text, :project_id)
-end
 
 end

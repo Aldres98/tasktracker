@@ -7,3 +7,18 @@
     </ul>
   <% end %>
 <% end %>
+
+<button id="show_form_button">+</button>
+
+<%= form_for @todo do |r| %>
+<p>
+  <%= r.text_field :text %>
+</p>
+  <p> <%= select(:todo, :project_id, [['Семья', 1], ['Работа', 2], ['Прочее', 3]]) %> </p>
+ <p>
+ <%= link_to 'ОТМЕНА', "", id: "hide_form_button" %>
+  <%= link_to 'ОК', "", id: "ok_submit_link" %>
+
+ </p>
+
+<% end %>
