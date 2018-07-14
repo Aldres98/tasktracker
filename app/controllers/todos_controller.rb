@@ -4,7 +4,7 @@ class TodosController < ApplicationController
     @todo = Todo.new(todo_params)
   respond_to do |format|
     if @todo.save
-      format.html { redirect_to projects_index_url, notice: 'Todo was successfully created.' }
+      format.html { redirect_to root_path, notice: 'Todo was successfully created.' }
       format.json { render :show, status: :created, location: @todo }
     else
       format.html { render :new }
