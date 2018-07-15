@@ -1,12 +1,25 @@
-<h1> Задачи </h1>
+<div id="header">
+  <h1 id="header-title"> Задачи </h1>
+</div>
+<div class="container">
+  <div class="row">
 <% @projects.each do |project| %>
+<div class="col-s-12 col-md-6 col-lg-4">
+<div id="project-card">
+  <div id="project-title">
 <h1><%=project.title%></h1>
+</div>
   <% project.todos.each do |todo| %>
     <ul>
-      <li><%=todo.text%></li>
+      <input type="checkbox" <%= if todo.isCompleted then "checked" end %>
+      <li><span class="todo-text"><%=todo.text%></span></li>
     </ul>
   <% end %>
+</div>
+</div>
 <% end %>
+</div>
+</div>
 
 <button id="show_form_button">+</button>
 

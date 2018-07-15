@@ -16,8 +16,15 @@
 //= require_tree .
 
 $(document).ready(function(){
+
+  $('input').iCheck({
+	    checkboxClass: 'icheckbox_minimal-blue',
+	    radioClass: 'iradio_minimal-blue',
+	    increaseArea: '20%' // optional
+	});
+
   $("#new_todo").hide();
-  
+
   $("#show_form_button").click(function(){
     $("#new_todo").show();
   });
@@ -30,4 +37,5 @@ $(document).ready(function(){
     event.preventDefault();
     $("#new_todo").submit();
   });
+
 });
