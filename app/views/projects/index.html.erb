@@ -1,37 +1,48 @@
 <div id="header">
-  <h1 id="header-title"> Задачи </h1>
+  <span id="header-title"> Задачи </span>
+  <button id = "add-todo-button">+</button>
 </div>
 <div class="container">
   <div class="row">
 <% @projects.each do |project| %>
-<div class="col-s-12 col-md-6 col-lg-4">
+<div class=" project-wrapper col-s-12 col-md-6 col-lg-4">
 <div id="project-card">
-  <div id="project-title">
-<h1><%=project.title%></h1>
-</div>
+  <div id="project-title"><span><%=project.title%></span></div>
+<ul>
   <% project.todos.each do |todo| %>
-    <ul>
-      <input type="checkbox" <%= if todo.isCompleted then "checked" end %>
-      <li><span class="todo-text"><%=todo.text%></span></li>
-    </ul>
+  <li>
+    <%= form_with scope: :todo, local: true, url: {controller: "todo", action: "update", id: todo.id}, method: 'put', class: "todo-checkbox-form" do |f| %>
+     <span>
+        <% if todo.isCompleted %>
+          <input type = 'checkbox' checked class="todo-checkbox">
+          <del class = 'todo-text'> <%= todo.text %></del>
+        <% else %>
+          <input type = 'checkbox' class="todo-checkbox">
+          <span class = 'todo-text'><%=todo.text%></span>
+        <% end %>
+     </span>
+    <% end %>
+  </li>
   <% end %>
+</ul>
 </div>
 </div>
 <% end %>
 </div>
 </div>
 
-<button id="show_form_button">+</button>
-
-<%= form_for @todo do |r| %>
-<p>
-  <%= r.text_field :text %>
-</p>
-  <p> <%= select(:todo, :project_id, [['Семья', 1], ['Работа', 2], ['Прочее', 3]]) %> </p>
- <p>
- <%= link_to 'ОТМЕНА', "", id: "hide_form_button" %>
-  <%= link_to 'ОК', "", id: "ok_submit_link" %>
-
- </p>
-
-<% end %>
+<div id="popup-background">
+  <%= form_with scope: :todo, local: true, url: {controller: "todo", action: "create"}, id: "new-todo-form" do |r| %>
+<p id="popup-title">Добавить задачу</p>
+<div id="new-todo-form-box">
+    <%= r.text_field :text, placeholder: "Введите текст задачи", id: "new-todo-form-input" %>
+    <p>
+    <%= r.select :project_id, options_for_select(@projects.collect{|p| [p.title, p.id]}), {}, { :class => 'select2-selection' } %>
+  </p>
+   <p>
+   <%= link_to 'ОТМЕНА', "/", id: "hide_form_button" %>
+    <%= link_to 'ОК', "/", id: "ok_submit_link" %>
+   </p>
+ </div>
+   <% end %>
+</div>

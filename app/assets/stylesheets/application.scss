@@ -13,20 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+ $primary-color: #3aafda;
+
  @font-face {
-   font-family: 'OpenSans';
+   font-family: 'OpenSans-Regular';
    src: font-url("OpenSans-Regular.ttf") unquote("format('truetype')");
    font-weight: normal;
    font-style: normal;
  }
  @font-face {
-   font-family: 'OpenSans';
+   font-family: 'OpenSans-Light';
    src: font-url("OpenSans-Light.ttf") unquote("format('truetype')");
    font-weight: lighter;
    font-style: normal;
  }
  @font-face {
-   font-family: 'OpenSans';
+   font-family: 'OpenSans-Semibold';
    src: font-url("OpenSans-Semibold.ttf") unquote("format('truetype')");
    font-weight: bold;
    font-style: normal;
@@ -34,25 +37,170 @@
 
  *{
  	font-family: 'OpenSans';
+  margin: 0;
+  padding: 0;
  }
+
 
  #header{
    width: 100%;
    height: 100px;
-   background-color: #3aafda;
+   font-family: 'OpenSans-Regular';
+   background-color: $primary-color;
    width:100%;
+   margin: auto;
    text-align: center;
    color: white;
  }
 
+ .project-wrapper {
+   padding: 30px 15px;
+ }
+
  #header-title{
    line-height: 90px;
-   margin: 0;
+   padding: 10px 20px;
+   vertical-align: middle;
+   font-size: 24px;
+   margin: auto;
+   text-transform: uppercase;
+ }
+
+ #add-todo-button {
+   position: absolute;
+   right: 10px;
+   top: 10px;
+   font-size: 42px;
+   background-color: rgba(0,0,0,0);
+   border-radius: 5px;
+   border: 1px solid $primary-color;
+   height: 80px;
+   vertical-align: middle;
+   width: 80px;
+   line-height: 20px;
+ }
+
+ #add-todo-button:hover {
+   border: 1px solid #ffff;
  }
 
  #project-card{
    background-color: white;
-   -webkit-box-shadow: 6px 4px 12px 1px rgba(0,0,0,0.47);
-   -moz-box-shadow: 6px 4px 12px 1px rgba(0,0,0,0.47);
-   box-shadow: 6px 4px 12px 1px rgba(0,0,0,0.47);
+   -webkit-box-shadow: 9px 6px 11px -8px rgba(0,0,0,0.59);
+   -moz-box-shadow: 9px 6px 11px -8px rgba(0,0,0,0.59);
+   box-shadow: 9px 6px 11px -8px rgba(0,0,0,0.59);
+   font-family: 'OpenSans-Light';
+   padding: 10px;
  }
+
+ #project-title{
+   border-bottom: 2px solid rgba(0,0,0,0.05);
+   font-family: 'OpenSans-Semibold';
+   font-size: 22px;
+   padding: 10px 20px;
+ }
+
+ li {
+	padding: 15px 25px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#popup-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#popup-title {
+  width: 100%;
+  font-size: 20px
+}
+
+#new-todo-form {
+  width: 400px;
+	max-width: 90%;
+	background-color: #fff;
+
+}
+
+
+#new-todo-form-input {
+  text-align: center;
+  width: 100%;
+}
+
+#popup-title {
+  text-align: center;
+border-bottom: 1px solid rgba(0,0,0,0.1);
+padding: 12px;
+}
+
+#new-todo-form-box {
+  padding: 15px;
+
+
+p {
+  margin-top: 20px;
+}
+}
+
+ .todo-text {
+   margin-left: 10px;
+   font-family: 'OpenSans-Semibold';
+   font-size: 14px;
+ }
+
+ .select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+
+   height: 40px !important;
+
+   span {
+
+       line-height: 40px !important;
+
+       text-align: left;
+
+   }
+
+}
+
+.select2-container {
+	width: 100% !important;
+}
+
+.select2-selection {
+
+   border-radius: 0 !important;
+
+}
+
+#ok_submit_link {
+	font-size: 12px;
+	float: left;
+	line-height: 100%;
+	padding: 14px 64px;
+	margin-bottom: 15px;
+	background-color: rgba(0,0,0,0.3);
+	color: #fff;
+	text-decoration: none;
+}
+
+#hide_form_button {
+	font-size: 12px;
+	float: right;
+	line-height: 100%;
+	padding: 14px 80px;
+	margin-bottom: 15px;
+	background-color: $primary-color;
+	color: #fff;
+	text-decoration: none;
+}

@@ -1,4 +1,4 @@
-class TodosController < ApplicationController
+class TodoController < ApplicationController
 
   def create
     @todo = Todo.new(todo_params)
@@ -11,6 +11,13 @@ class TodosController < ApplicationController
       format.json { render json: @todo.errors, status: :unprocessable_entity }
     end
   end
+end
+
+def update
+  @todo = Todo.find(params[:id])
+  @todo.isCompleted = !@todo.isCompleted
+  @todo.save
+  redirect_to root_path
 end
 
   private

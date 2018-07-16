@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @todo = Todo.new
+    # @todo = Todo.new
     @projects = Project.all
   end
 

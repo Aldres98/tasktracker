@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root :to => 'projects#index'
   get '/' =>'projects#index'
   post 'todo/create' => 'todo#create'
+  put 'todo/update' => 'todo#update'
   get 'projects/create' =>'projects#create'
   get 'projects/update' => 'projects#update'
   get 'projects/delete' => 'projects#delete'
