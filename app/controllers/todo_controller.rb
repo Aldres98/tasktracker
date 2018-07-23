@@ -1,5 +1,5 @@
 class TodoController < ApplicationController
-
+  skip_before_action :verify_authenticity_token
 def index
   @todos = Todo.all
   respond_to do |format|
@@ -9,13 +9,8 @@ end
 
   def create
     @todo = Todo.new(todo_params)
-  respond_to do |format|
     if @todo.save
-      format.html { redirect_to root_path, notice: 'Todo was successfully created.' }
-      format.json { render :show, status: :created, location: @todo }
-    else
-      format.html { render :new }
-      format.json { render json: @todo.errors, status: :unprocessable_entity }
+      redirect_to root_path
     end
   end
 end
