@@ -12,7 +12,6 @@ end
     if @todo.save
       redirect_to root_path
     end
-  end
 end
 
 def update
