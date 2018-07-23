@@ -1,5 +1,12 @@
 class TodoController < ApplicationController
 
+def index
+  @todos = Todo.all
+  respond_to do |format|
+    format.json {render json: @todos}
+  end
+end
+
   def create
     @todo = Todo.new(todo_params)
   respond_to do |format|

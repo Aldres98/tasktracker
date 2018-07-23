@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :todos
+  resources :todo, :projects
   root :to => 'projects#index'
   get '/' =>'projects#index'
   post 'todo/create' => 'todo#create'
